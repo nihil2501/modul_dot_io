@@ -17,7 +17,7 @@ defmodule ModulDotIoWeb.Router do
   scope "/", ModulDotIoWeb do
     pipe_through :browser
 
-    get "/", PatchController, :index
+    live "/", PatchLive
   end
 
   # Other scopes may use custom stacks.
