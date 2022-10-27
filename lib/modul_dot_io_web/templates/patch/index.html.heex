@@ -1,0 +1,20 @@
+<section>
+  <h2>links</h2>
+</section>
+
+<table>
+  <thead>
+    <tr>
+      <th>input</th>
+      <th>output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for {input, output} <- @links do %>
+      <tr>
+        <td><%= input %></td>
+        <td><%= output %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
