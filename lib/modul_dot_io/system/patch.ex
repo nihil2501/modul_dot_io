@@ -12,12 +12,11 @@ defmodule ModulDotIo.System.Patch do
   def toggle_link(link) do
     channel_update =
       fn channel ->
-        next_channel =
-          if link.output_io.channel != channel do
-            link.output_io.channel
-          end
-
-        {channel, next_channel}
+        if link.output_io.channel == channel do
+          :pop
+        else
+          {channel, link.output_io.channel}
+        end
       end
 
     links_update =
