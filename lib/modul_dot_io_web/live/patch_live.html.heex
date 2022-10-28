@@ -1,20 +1,138 @@
 <section>
-  <h2>links</h2>
+  <h2>patch</h2>
 </section>
 
-<table>
-  <thead>
-    <tr>
-      <th>input</th>
-      <th>output</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for {input, output} <- @links do %>
-      <tr>
-        <td><%= input %></td>
-        <td><%= output %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="keyboard">
+  <div class="keyboard__row">
+    <div class="key--bottom-left key--word key--w4 key--hidden" data-key="9">
+      <span>tab</span>
+    </div>
+    <div class={classes(@links, "q")} data-char="Q">Q</div>
+    <div class={classes(@links, "w")} data-char="W">W</div>
+    <div class={classes(@links, "e")} data-char="E">E</div>
+    <div class={classes(@links, "r")} data-char="R">R</div>
+    <div class={classes(@links, "t")} data-char="T">T</div>
+    <div class={classes(@links, "y")} data-char="Y">Y</div>
+    <div class={classes(@links, "u")} data-char="U">U</div>
+    <div class={classes(@links, "i")} data-char="I">I</div>
+    <div class={classes(@links, "o")} data-char="O">O</div>
+    <div class={classes(@links, "p")} data-char="P">P</div>
+    <div class="key--double key--hidden" data-key="219" data-char="{[">
+      <div>{</div>
+      <div>[</div>
+    </div>
+    <div class="key--double key--hidden" data-key="221" data-char="}]">
+      <div>}</div>
+      <div>]</div>
+    </div>
+    <div class="key--double key--hidden" data-key="220" data-char="|\">
+      <div>|</div>
+      <div>\</div>
+    </div>
+  </div>
+  <div class="keyboard__row">
+    <div class="key--bottom-left key--word key--w5 key--hidden" data-key="20">
+      <span>caps lock</span>
+    </div>
+    <div class={classes(@links, "a")} data-char="A">A</div>
+    <div class={classes(@links, "s")} data-char="S">S</div>
+    <div class={classes(@links, "d")} data-char="D">D</div>
+    <div class={classes(@links, "f")} data-char="F">F</div>
+    <div class={classes(@links, "g")} data-char="G">G</div>
+    <div class={classes(@links, "h")} data-char="H">H</div>
+    <div class={classes(@links, "j")} data-char="J">J</div>
+    <div class={classes(@links, "k")} data-char="K">K</div>
+    <div class={classes(@links, "l")} data-char="L">L</div>
+    <div class="key--double key--hidden" data-key="186">
+      <div>:</div>
+      <div>;</div>
+    </div>
+    <div class="key--double key--hidden" data-key="222">
+      <div>"</div>
+      <div>'</div>
+    </div>
+    <div class="key--bottom-right key--word key--w5 key--hidden" data-key="13">
+      <span>return</span>
+    </div>
+  </div>
+  <div class="keyboard__row">
+    <div class="key--bottom-left key--word key--w6 key--hidden" data-key="16">
+      <span>shift</span>
+    </div>
+    <div class={classes(@links, "z")} data-char="Z">Z</div>
+    <div class={classes(@links, "x")} data-char="X">X</div>
+    <div class={classes(@links, "c")} data-char="C">C</div>
+    <div class={classes(@links, "v")} data-char="V">V</div>
+    <div class={classes(@links, "b")} data-char="B">B</div>
+    <div class={classes(@links, "n")} data-char="N">N</div>
+    <div class={classes(@links, "m")} data-char="M">M</div>
+    <div class="key--double key--hidden" data-key="188">
+      <div>&lt;</div>
+      <div>,</div>
+    </div>
+    <div class="key--double key--hidden" data-key="190">
+      <div>&gt;</div>
+      <div>.</div>
+    </div>
+    <div class="key--double key--hidden" data-key="191">
+      <div>?</div>
+      <div>/</div>
+    </div>
+    <div class="key--bottom-right key--word key--w6 key--hidden" data-key="16-R">
+      <span>shift</span>
+    </div>
+  </div>
+</div>
+
+<div phx-window-keydown="select_io" phx-key="q"></div>
+<div phx-window-keyup="deselect_io" phx-key="q"></div>
+<div phx-window-keydown="select_io" phx-key="w"></div>
+<div phx-window-keyup="deselect_io" phx-key="w"></div>
+<div phx-window-keydown="select_io" phx-key="e"></div>
+<div phx-window-keyup="deselect_io" phx-key="e"></div>
+<div phx-window-keydown="select_io" phx-key="r"></div>
+<div phx-window-keyup="deselect_io" phx-key="r"></div>
+<div phx-window-keydown="select_io" phx-key="t"></div>
+<div phx-window-keyup="deselect_io" phx-key="t"></div>
+<div phx-window-keydown="select_io" phx-key="y"></div>
+<div phx-window-keyup="deselect_io" phx-key="y"></div>
+<div phx-window-keydown="select_io" phx-key="u"></div>
+<div phx-window-keyup="deselect_io" phx-key="u"></div>
+<div phx-window-keydown="select_io" phx-key="i"></div>
+<div phx-window-keyup="deselect_io" phx-key="i"></div>
+<div phx-window-keydown="select_io" phx-key="o"></div>
+<div phx-window-keyup="deselect_io" phx-key="o"></div>
+<div phx-window-keydown="select_io" phx-key="p"></div>
+<div phx-window-keyup="deselect_io" phx-key="p"></div>
+<div phx-window-keydown="select_io" phx-key="a"></div>
+<div phx-window-keyup="deselect_io" phx-key="a"></div>
+<div phx-window-keydown="select_io" phx-key="s"></div>
+<div phx-window-keyup="deselect_io" phx-key="s"></div>
+<div phx-window-keydown="select_io" phx-key="d"></div>
+<div phx-window-keyup="deselect_io" phx-key="d"></div>
+<div phx-window-keydown="select_io" phx-key="f"></div>
+<div phx-window-keyup="deselect_io" phx-key="f"></div>
+<div phx-window-keydown="select_io" phx-key="g"></div>
+<div phx-window-keyup="deselect_io" phx-key="g"></div>
+<div phx-window-keydown="select_io" phx-key="h"></div>
+<div phx-window-keyup="deselect_io" phx-key="h"></div>
+<div phx-window-keydown="select_io" phx-key="j"></div>
+<div phx-window-keyup="deselect_io" phx-key="j"></div>
+<div phx-window-keydown="select_io" phx-key="k"></div>
+<div phx-window-keyup="deselect_io" phx-key="k"></div>
+<div phx-window-keydown="select_io" phx-key="l"></div>
+<div phx-window-keyup="deselect_io" phx-key="l"></div>
+<div phx-window-keydown="select_io" phx-key="z"></div>
+<div phx-window-keyup="deselect_io" phx-key="z"></div>
+<div phx-window-keydown="select_io" phx-key="x"></div>
+<div phx-window-keyup="deselect_io" phx-key="x"></div>
+<div phx-window-keydown="select_io" phx-key="c"></div>
+<div phx-window-keyup="deselect_io" phx-key="c"></div>
+<div phx-window-keydown="select_io" phx-key="v"></div>
+<div phx-window-keyup="deselect_io" phx-key="v"></div>
+<div phx-window-keydown="select_io" phx-key="b"></div>
+<div phx-window-keyup="deselect_io" phx-key="b"></div>
+<div phx-window-keydown="select_io" phx-key="n"></div>
+<div phx-window-keyup="deselect_io" phx-key="n"></div>
+<div phx-window-keydown="select_io" phx-key="m"></div>
+<div phx-window-keyup="deselect_io" phx-key="m"></div>

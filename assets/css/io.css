@@ -1,0 +1,36 @@
+.channel-a { background: rgba(255, 50, 50, 0.85); }
+.channel-b { background: rgba(50, 255, 50, 0.85); }
+.channel-c { background: rgba(50, 50, 255, 0.85); }
+.channel-d { background: rgba(255, 63, 50, 0.85); }
+.channel-e { background: rgba(63, 255, 50, 0.85); }
+.channel-f { background: rgba(63, 50, 255, 0.85); }
+.channel-g { background: rgba(255, 50, 63, 0.85); }
+.channel-h { background: rgba(50, 255, 63, 0.85); }
+.channel-i { background: rgba(50, 63, 255, 0.85); }
+.channel-j { background: rgba(255, 126, 50, 0.85); }
+.channel-k { background: rgba(126, 255, 50, 0.85); }
+.channel-l { background: rgba(126, 50, 255, 0.85); }
+.channel-m { background: rgba(255, 50, 126, 0.85); }
+.channel-n { background: rgba(50, 255, 126, 0.85); }
+.channel-o { background: rgba(50, 126, 255, 0.85); }
+.channel-p { background: rgba(255, 189, 50, 0.85); }
+.channel-q { background: rgba(189, 255, 50, 0.85); }
+.channel-r { background: rgba(189, 50, 255, 0.85); }
+.channel-s { background: rgba(255, 50, 189, 0.85); }
+.channel-t { background: rgba(50, 255, 189, 0.85); }
+.channel-u { background: rgba(50, 189, 255, 0.85); }
+.channel-v { background: rgba(255, 252, 50, 0.85); }
+.channel-w { background: rgba(252, 255, 50, 0.85); }
+.channel-x { background: rgba(252, 50, 255, 0.85); }
+.channel-y { background: rgba(255, 50, 252, 0.85); }
+.channel-z { background: rgba(50, 255, 252, 0.85); }
+
+.channel-output {
+  animation: blink-animation 1s ease-out infinite alternate;
+}
+
+@keyframes blink-animation {
+  to {
+    background: #333;
+  }
+}

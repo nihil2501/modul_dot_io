@@ -4,6 +4,6 @@ defmodule ModulDotIoWeb.PatchLiveTest do
 
   test "connected mount", %{conn: conn} do
     {:ok, _view, html} = live(conn, "/")
-    assert html =~ "links"
+    assert html =~ "patch"
   end
 end
