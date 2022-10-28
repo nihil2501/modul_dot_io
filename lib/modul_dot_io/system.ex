@@ -4,6 +4,6 @@ defmodule ModulDotIo.System do
   def state do
     Patch.start()
     LinkForming.start()
-    Patch.get_links() |> IO.inspect()
+    Patch.get_links()
   end
 end
