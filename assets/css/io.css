@@ -1,36 +1,37 @@
-.channel-a { background: rgba(255, 50, 50, 0.85); }
-.channel-b { background: rgba(50, 255, 50, 0.85); }
-.channel-c { background: rgba(50, 50, 255, 0.85); }
-.channel-d { background: rgba(255, 63, 50, 0.85); }
-.channel-e { background: rgba(63, 255, 50, 0.85); }
-.channel-f { background: rgba(63, 50, 255, 0.85); }
-.channel-g { background: rgba(255, 50, 63, 0.85); }
-.channel-h { background: rgba(50, 255, 63, 0.85); }
-.channel-i { background: rgba(50, 63, 255, 0.85); }
-.channel-j { background: rgba(255, 126, 50, 0.85); }
-.channel-k { background: rgba(126, 255, 50, 0.85); }
-.channel-l { background: rgba(126, 50, 255, 0.85); }
-.channel-m { background: rgba(255, 50, 126, 0.85); }
-.channel-n { background: rgba(50, 255, 126, 0.85); }
-.channel-o { background: rgba(50, 126, 255, 0.85); }
-.channel-p { background: rgba(255, 189, 50, 0.85); }
-.channel-q { background: rgba(189, 255, 50, 0.85); }
-.channel-r { background: rgba(189, 50, 255, 0.85); }
-.channel-s { background: rgba(255, 50, 189, 0.85); }
-.channel-t { background: rgba(50, 255, 189, 0.85); }
-.channel-u { background: rgba(50, 189, 255, 0.85); }
-.channel-v { background: rgba(255, 252, 50, 0.85); }
-.channel-w { background: rgba(252, 255, 50, 0.85); }
-.channel-x { background: rgba(252, 50, 255, 0.85); }
-.channel-y { background: rgba(255, 50, 252, 0.85); }
-.channel-z { background: rgba(50, 255, 252, 0.85); }
+.channel-a { background: rgba(255, 0, 0, 0.75); }
+.channel-b { background: rgba(0, 255, 0, 0.75); }
+.channel-c { background: rgba(0, 0, 255, 0.75); }
+.channel-d { background: rgba(255, 63, 0, 0.75); }
+.channel-e { background: rgba(63, 255, 0, 0.75); }
+.channel-f { background: rgba(63, 0, 255, 0.75); }
+.channel-g { background: rgba(255, 0, 63, 0.75); }
+.channel-h { background: rgba(0, 255, 63, 0.75); }
+.channel-i { background: rgba(0, 63, 255, 0.75); }
+.channel-j { background: rgba(255, 126, 0, 0.75); }
+.channel-k { background: rgba(126, 255, 0, 0.75); }
+.channel-l { background: rgba(126, 0, 255, 0.75); }
+.channel-m { background: rgba(255, 0, 126, 0.75); }
+.channel-n { background: rgba(0, 255, 126, 0.75); }
+.channel-o { background: rgba(0, 126, 255, 0.75); }
+.channel-p { background: rgba(255, 189, 0, 0.75); }
+.channel-q { background: rgba(189, 255, 0, 0.75); }
+.channel-r { background: rgba(189, 0, 255, 0.75); }
+.channel-s { background: rgba(255, 0, 189, 0.75); }
+.channel-t { background: rgba(0, 255, 189, 0.75); }
+.channel-u { background: rgba(0, 189, 255, 0.75); }
+.channel-v { background: rgba(255, 252, 0, 0.75); }
+.channel-w { background: rgba(252, 255, 0, 0.75); }
+.channel-x { background: rgba(252, 0, 255, 0.75); }
+.channel-y { background: rgba(255, 0, 252, 0.75); }
+.channel-z { background: rgba(0, 255, 252, 0.75); }
 
 .channel-output {
-  animation: blink-animation 1s ease-out infinite alternate;
+  /* https://cubic-bezier.com/#0,0,0,1 */
+  animation: blink-animation 1s cubic-bezier(0.0,0.0,0.0,1.0) infinite alternate;
 }
 
 @keyframes blink-animation {
-  to {
+  from {
     background: #333;
   }
 }
