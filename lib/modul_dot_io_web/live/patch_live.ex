@@ -32,19 +32,18 @@ defmodule ModulDotIoWeb.PatchLive do
 
   def mount(_params, _session, socket) do
     links = System.state()
-    {:ok, assign(socket, :links, links)}
+    {:ok, assign(socket, links: links)}
   end
 
   def handle_event("select_io", %{"repeat" => true}, socket), do: {:noreply, socket}
   def handle_event("select_io", %{"key" => channel, "repeat" => false}, socket) do
     LinkForming.select_io(@channel_ios[channel])
     links = System.state()
-    {:noreply, assign(socket, :links, links)}
+    {:noreply, assign(socket, links: links)}
   end
 
   def handle_event("deselect_io", %{"key" => channel}, socket) do
     LinkForming.deselect_io(@channel_ios[channel])
-    links = System.state()
-    {:noreply, assign(socket, :links, links)}
+    {:noreply, socket}
   end
 end
