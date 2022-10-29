@@ -1,4 +1,4 @@
-defmodule ModulDotIoWeb.PatchLive do
+defmodule ModulDotIoWeb.PageLive do
   use ModulDotIoWeb, :live_view
 
   alias Phoenix.LiveView.JS
