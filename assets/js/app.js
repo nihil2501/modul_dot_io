@@ -53,4 +53,4 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-import "./keyboard"
+window.addEventListener("keydown", e => e.repeat && e.stopPropagation(), true);
