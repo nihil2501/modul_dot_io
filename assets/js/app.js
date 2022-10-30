@@ -32,7 +32,13 @@ let liveSocket = new LiveSocket("/live", Socket, {
   metadata: {
     keydown: (e, el) => {
       return {
-        key: e.key,
+        key: e.key.toLowerCase(),
+        repeat: e.repeat,
+      };
+    },
+    keyup: (e, el) => {
+      return {
+        key: e.key.toLowerCase(),
         repeat: e.repeat,
       };
     }
