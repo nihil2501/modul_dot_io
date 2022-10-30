@@ -5,13 +5,18 @@ defmodule ModulDotIoWeb.IoComponent do
   alias ModulDotIo.System
   alias ModulDotIo.System.Io
 
+  attr :channel, :atom, required: true
+  attr :linked_channel, :atom, required: true
+  attr :rest, :global
+
   def io(assigns) do
     ~H"""
     <div
       class={["key--letter" | classes(@channel, @linked_channel)]}
       phx-window-keydown={keydown()}
       phx-window-keyup={keyup()}
-      phx-key={@channel}>
+      phx-key={@channel}
+      {@rest}>
       <%= @channel %>
     </div>
     """

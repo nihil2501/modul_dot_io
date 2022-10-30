@@ -1,34 +1,50 @@
 defmodule ModulDotIo.System.LinkForming do
-  use Agent
+  use GenServer
 
-  alias ModulDotIo.System.{Io, Link, Links}
+  alias ModulDotIo.System.{Io, Link}
 
-  def start, do: Agent.start(fn -> %MapSet{} end, name: __MODULE__)
+  def start do
+    GenServer.start(__MODULE__, :ok, name: __MODULE__)
+  end
 
-  def select_io(%Io{direction: :output} = io), do: add_output_io(io)
+  def select_io(%Io{direction: :output} = io) do
+    GenServer.cast(__MODULE__, {:add, io})
+    {:error, :no_link_formed}
+  end
+
   def select_io(%Io{direction: :input} = input_io) do
-    with [%Io{} = output_io] <- get_output_ios() do
-      link = %Link{input_io: input_io, output_io: output_io}
-      Links.toggle_link(link)
+    output_ios = GenServer.call(__MODULE__, :get)
+    case output_ios do
+      [%Io{} = output_io] ->
+        link = %Link{input_io: input_io, output_io: output_io}
+        {:ok, link}
+      _ ->
+        {:error, :no_link_formed}
     end
   end
 
-  def deselect_io(%Io{direction: :output} = io), do: remove_output_io(io)
-  def deselect_io(%Io{direction: :input}) do end
-
-  defp add_output_io(io) do
-    change_output_ios(&MapSet.put(&1, io))
+  def deselect_io(%Io{direction: :output} = io) do
+    GenServer.cast(__MODULE__, {:remove, io})
+    {:error, :no_link_formed}
   end
 
-  defp remove_output_io(io) do
-    change_output_ios(&MapSet.delete(&1, io))
+  def deselect_io(%Io{direction: :input}) do
+    {:error, :no_link_formed}
   end
 
-  defp change_output_ios(change) do
-    Agent.update(__MODULE__, change)
+  def handle_cast({:add, io}, output_ios) do
+    {:noreply, MapSet.put(output_ios, io)}
   end
 
-  defp get_output_ios do
-    Agent.get(__MODULE__, &MapSet.to_list/1)
+  def handle_cast({:remove, io}, output_ios) do
+    {:noreply, MapSet.delete(output_ios, io)}
+  end
+
+  def handle_call(:get, _from, output_ios) do
+    {:reply, MapSet.to_list(output_ios), output_ios}
+  end
+
+  def init(:ok) do
+    {:ok, %MapSet{}}
   end
 end

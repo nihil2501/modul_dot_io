@@ -18,6 +18,7 @@ defmodule ModulDotIo.System do
   # maybe be moved to a different file.
   def channel_ios, do: @channel_ios
 
+  # Move this?
   def state do
     Links.start()
     LinkForming.start()
