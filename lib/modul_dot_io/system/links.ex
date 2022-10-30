@@ -10,22 +10,24 @@ defmodule ModulDotIo.System.Links do
   end
 
   def toggle_link(link) do
-    channel_update =
+    output_channel_update =
       fn channel ->
-        if link.output_io.channel == channel do
-          :pop
+        next_channel = link.output_io.channel
+        if next_channel != channel do
+          {channel, next_channel}
         else
-          {channel, link.output_io.channel}
+          :pop
         end
       end
 
     links_update =
       fn links ->
+        input_channel = link.input_io.channel
         {_, next_links} =
           Map.get_and_update(
             links,
-            link.input_io.channel,
-            channel_update
+            input_channel,
+            output_channel_update
           )
 
         next_links
