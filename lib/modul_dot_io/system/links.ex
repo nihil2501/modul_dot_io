@@ -1,15 +1,21 @@
 defmodule ModulDotIo.System.Links do
-  use Agent
+  use GenServer
 
   def start do
-    Agent.start(fn -> %{} end, name: __MODULE__)
+    GenServer.start(__MODULE__, :ok, name: __MODULE__)
   end
 
   def get do
-    Agent.get(__MODULE__, fn links -> links end)
+    links = GenServer.call(__MODULE__, :get)
+    {:ok, links}
   end
 
   def toggle_link(link) do
+    links = GenServer.call(__MODULE__, {:toggle_link, link})
+    {:ok, links}
+  end
+
+  def handle_call({:toggle_link, link}, _from, links) do
     output_channel_update =
       fn channel ->
         next_channel = link.output_io.channel
@@ -20,19 +26,22 @@ defmodule ModulDotIo.System.Links do
         end
       end
 
-    links_update =
-      fn links ->
-        input_channel = link.input_io.channel
-        {_, next_links} =
-          Map.get_and_update(
-            links,
-            input_channel,
-            output_channel_update
-          )
+    input_channel = link.input_io.channel
+    {_, next_links} =
+      Map.get_and_update(
+        links,
+        input_channel,
+        output_channel_update
+      )
 
-        next_links
-      end
+    {:reply, next_links, next_links}
+  end
 
-    Agent.update(__MODULE__, links_update)
+  def handle_call(:get, _from, links) do
+    {:reply, links, links}
+  end
+
+  def init(:ok) do
+    {:ok, %{}}
   end
 end

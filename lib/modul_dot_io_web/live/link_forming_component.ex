@@ -4,7 +4,12 @@ defmodule ModulDotIoWeb.LinkFormingComponent do
   import ModulDotIoWeb.IoComponent
 
   alias ModulDotIo.System.LinkForming
-  alias ModulDotIo.System
+  import ModulDotIo.System, only: [channel_ios: 0]
+
+  def mount(socket) do
+    LinkForming.start()
+    {:ok, socket}
+  end
 
   # Client also stops propagation of key repeats, so this guard is redundant.
   def handle_event("select_io", %{"repeat" => true}, socket), do: {:noreply, socket}
@@ -24,6 +29,6 @@ defmodule ModulDotIoWeb.LinkFormingComponent do
 
   defp get_io(channel) do
     channel = String.to_atom(channel)
-    System.channel_ios()[channel]
+    channel_ios()[channel]
   end
 end

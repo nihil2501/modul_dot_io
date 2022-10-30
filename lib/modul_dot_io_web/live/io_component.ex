@@ -2,8 +2,8 @@ defmodule ModulDotIoWeb.IoComponent do
   use ModulDotIoWeb, :component
 
   alias Phoenix.LiveView.JS
-  alias ModulDotIo.System
   alias ModulDotIo.System.Io
+  import ModulDotIo.System, only: [channel_ios: 0]
 
   attr :channel, :atom, required: true
   attr :linked_channel, :atom, required: true
@@ -23,7 +23,7 @@ defmodule ModulDotIoWeb.IoComponent do
   end
 
   defp classes(channel, linked_channel) do
-    case System.channel_ios()[channel] do
+    case channel_ios()[channel] do
       %Io{direction: :output} ->
         ["channel-output", "channel-#{channel}"]
       %Io{direction: :input} ->

@@ -1,5 +1,5 @@
 defmodule ModulDotIo.System do
-  alias ModulDotIo.System.{Io, LinkForming, Links}
+  alias ModulDotIo.System.Io
 
   @channel_ios (
     Map.new(97..122, fn i ->
@@ -17,11 +17,4 @@ defmodule ModulDotIo.System do
   # and they also use it locally to determine their own appearance. This should
   # maybe be moved to a different file.
   def channel_ios, do: @channel_ios
-
-  # Move this?
-  def state do
-    Links.start()
-    LinkForming.start()
-    Links.get()
-  end
 end
