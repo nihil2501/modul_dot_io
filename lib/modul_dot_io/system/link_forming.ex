@@ -5,9 +5,6 @@ defmodule ModulDotIo.System.LinkForming do
 
   def start, do: Agent.start(fn -> %MapSet{} end, name: __MODULE__)
 
-  def deselect_io(%Io{direction: :output} = io), do: remove_output_io(io)
-  def deselect_io(%Io{direction: :input}) do end
-
   def select_io(%Io{direction: :output} = io), do: add_output_io(io)
   def select_io(%Io{direction: :input} = input_io) do
     with [%Io{} = output_io] <- get_output_ios() do
@@ -16,12 +13,15 @@ defmodule ModulDotIo.System.LinkForming do
     end
   end
 
-  defp remove_output_io(io) do
-    change_output_ios(&MapSet.delete(&1, io))
-  end
+  def deselect_io(%Io{direction: :output} = io), do: remove_output_io(io)
+  def deselect_io(%Io{direction: :input}) do end
 
   defp add_output_io(io) do
     change_output_ios(&MapSet.put(&1, io))
+  end
+
+  defp remove_output_io(io) do
+    change_output_ios(&MapSet.delete(&1, io))
   end
 
   defp change_output_ios(change) do
