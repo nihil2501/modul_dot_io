@@ -3,6 +3,78 @@
 @import "./keyboard.css";
 @import "./io.css";
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 390px;
+}
+
+main section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+#modul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+#modul #chassis {
+  width: 38%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: #333;
+  color: #eee;
+  float: left;
+  border-radius: 0.3em;
+  margin: 0.2em 0.2em 0.2em 3.8em;
+  padding: 0.5em 0.75em 0.5em 0.75em;
+  box-sizing: border-box;
+  border: 1px solid #444;
+  box-shadow: 0 0.2em 0 0.05em #222;
+  border-bottom-color: #555;
+}
+
+#modul #chassis select {
+  color: #00ff00;
+  border-color: #00ff00;
+  border-width: 2px;
+  font-size: 11px;
+  font-family: Arial;
+  font-weight: 700;
+  line-height: 2.6rem;
+  background: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0rem;
+  margin-top: 0.2rem;
+  flex: 8;
+}
+
+#modul #chassis .button-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#modul #chassis button {
+  background: #333;
+  color: #00ff00;
+  border-color: #00ff00;
+  border-width: 2px;
+  margin-left: 1rem;
+  margin-bottom: 0rem;
+  margin-top: 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;

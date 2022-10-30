@@ -1,7 +1,7 @@
 defmodule ModulDotIoWeb.PageLive do
   use ModulDotIoWeb, :live_view
 
-  alias ModulDotIoWeb.LinkFormingComponent
+  alias ModulDotIoWeb.{LinkFormingComponent, ModulComponent}
   alias ModulDotIo.System.Links
   import ModulDotIo.System, only: [channel_ios: 0]
 
@@ -10,6 +10,11 @@ defmodule ModulDotIoWeb.PageLive do
     <.live_component
       module={LinkFormingComponent}
       id={LinkFormingComponent}
+      links={@links}
+    />
+    <.live_component
+      module={ModulComponent}
+      id={ModulComponent}
       links={@links}
     />
     """
