@@ -45,7 +45,7 @@ defmodule ModulDotIoWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {ModulDotIoWeb.LayoutView, "live.html"}
+        layout: {ModulDotIoWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end
