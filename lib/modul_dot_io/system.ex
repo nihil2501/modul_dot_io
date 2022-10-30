@@ -1,9 +1,9 @@
 defmodule ModulDotIo.System do
-  alias ModulDotIo.System.{Io, LinkForming, Patch}
+  alias ModulDotIo.System.{Io, LinkForming, Links}
 
   def state do
-    Patch.start()
+    Links.start()
     LinkForming.start()
-    Patch.get_links()
+    Links.get()
   end
 end

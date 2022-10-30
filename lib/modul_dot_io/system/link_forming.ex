@@ -1,7 +1,7 @@
 defmodule ModulDotIo.System.LinkForming do
   use Agent
 
-  alias ModulDotIo.System.{Io, Link, Patch}
+  alias ModulDotIo.System.{Io, Link, Links}
 
   def start, do: Agent.start(fn -> %MapSet{} end, name: __MODULE__)
 
@@ -12,7 +12,7 @@ defmodule ModulDotIo.System.LinkForming do
   def select_io(%Io{direction: :input} = input_io) do
     with [%Io{} = output_io] <- get_output_ios() do
       link = %Link{input_io: input_io, output_io: output_io}
-      Patch.toggle_link(link)
+      Links.toggle_link(link)
     end
   end
 
