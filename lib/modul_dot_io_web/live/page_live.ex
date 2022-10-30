@@ -16,19 +16,28 @@ defmodule ModulDotIoWeb.PageLive do
   )
 
   def classes(channel, linked_channel) do
-    channel_classes =
-      case @channel_ios[channel] do
-        %Io{direction: :output} ->
-          ["channel-output", "channel-#{channel}"]
-        %Io{direction: :input} ->
-          if linked_channel do
-            ["channel-input", "channel-#{linked_channel}"]
-          else
-            ["channel-input"]
-          end
-      end
+    case @channel_ios[channel] do
+      %Io{direction: :output} ->
+        ["channel-output", "channel-#{channel}"]
+      %Io{direction: :input} ->
+        if linked_channel do
+          ["channel-input", "channel-#{linked_channel}"]
+        else
+          ["channel-input"]
+        end
+    end
+  end
 
-    Enum.join(["key--letter" | channel_classes], " ")
+  def io(assigns) do
+    ~H"""
+    <div
+      class={["key--letter" | classes(@channel, @linked_channel)]}
+      phx-window-keydown={press_io()}
+      phx-window-keyup={unpress_io()}
+      phx-key={@channel}>
+      <%= @channel %>
+    </div>
+    """
   end
 
   def press_io(js \\ %JS{}) do

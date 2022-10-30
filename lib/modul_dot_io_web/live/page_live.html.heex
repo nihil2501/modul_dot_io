@@ -3,76 +3,16 @@
     <div class="key--bottom-left key--word key--w4 key--hidden">
       <span>tab</span>
     </div>
-    <div
-      class={classes(:q, @links.q)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="q">
-      Q
-    </div>
-    <div
-      class={classes(:w, @links.w)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="w">
-      W
-    </div>
-    <div
-      class={classes(:e, @links.e)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="e">
-      E
-    </div>
-    <div
-      class={classes(:r, @links.r)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="r">
-      R
-    </div>
-    <div
-      class={classes(:t, @links.t)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="t">
-      T
-    </div>
-    <div
-      class={classes(:y, @links.y)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="y">
-      Y
-    </div>
-    <div
-      class={classes(:u, @links.u)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="u">
-      U
-    </div>
-    <div
-      class={classes(:i, @links.i)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="i">
-      I
-    </div>
-    <div
-      class={classes(:o, @links.o)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="o">
-      O
-    </div>
-    <div
-      class={classes(:p, @links.p)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="p">
-      P
-    </div>
+    <.io channel={:q} linked_channel={@links.q}) />
+    <.io channel={:w} linked_channel={@links.w}) />
+    <.io channel={:e} linked_channel={@links.e}) />
+    <.io channel={:r} linked_channel={@links.r}) />
+    <.io channel={:t} linked_channel={@links.t}) />
+    <.io channel={:y} linked_channel={@links.y}) />
+    <.io channel={:u} linked_channel={@links.u}) />
+    <.io channel={:i} linked_channel={@links.i}) />
+    <.io channel={:o} linked_channel={@links.o}) />
+    <.io channel={:p} linked_channel={@links.p}) />
     <div class="key--double key--hidden">
       <div>{</div>
       <div>[</div>
@@ -90,69 +30,15 @@
     <div class="key--bottom-left key--word key--w5 key--hidden">
       <span>caps lock</span>
     </div>
-    <div
-      class={classes(:a, @links.a)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="a">
-      A
-    </div>
-    <div
-      class={classes(:s, @links.s)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="s">
-      S
-    </div>
-    <div
-      class={classes(:d, @links.d)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="d">
-      D
-    </div>
-    <div
-      class={classes(:f, @links.f)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="f">
-      F
-    </div>
-    <div
-      class={classes(:g, @links.g)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="g">
-      G
-    </div>
-    <div
-      class={classes(:h, @links.h)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="h">
-      H
-    </div>
-    <div
-      class={classes(:j, @links.j)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="j">
-      J
-    </div>
-    <div
-      class={classes(:k, @links.k)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="k">
-      K
-    </div>
-    <div
-      class={classes(:l, @links.l)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="l">
-      L
-    </div>
+    <.io channel={:a} linked_channel={@links.a}) />
+    <.io channel={:s} linked_channel={@links.s}) />
+    <.io channel={:d} linked_channel={@links.d}) />
+    <.io channel={:f} linked_channel={@links.f}) />
+    <.io channel={:g} linked_channel={@links.g}) />
+    <.io channel={:h} linked_channel={@links.h}) />
+    <.io channel={:j} linked_channel={@links.j}) />
+    <.io channel={:k} linked_channel={@links.k}) />
+    <.io channel={:l} linked_channel={@links.l}) />
     <div class="key--double key--hidden">
       <div>:</div>
       <div>;</div>
@@ -169,55 +55,13 @@
     <div class="key--bottom-left key--word key--w6 key--hidden">
       <span>shift</span>
     </div>
-    <div
-      class={classes(:z, @links.z)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="z">
-      Z
-    </div>
-    <div
-      class={classes(:x, @links.x)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="x">
-      X
-    </div>
-    <div
-      class={classes(:c, @links.c)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="c">
-      C
-    </div>
-    <div
-      class={classes(:v, @links.v)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="v">
-      V
-    </div>
-    <div
-      class={classes(:b, @links.b)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="b">
-      B
-    </div>
-    <div
-      class={classes(:n, @links.n)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="n">
-      N
-    </div>
-    <div
-      class={classes(:m, @links.m)}
-      phx-window-keydown={press_io()}
-      phx-window-keyup={unpress_io()}
-      phx-key="m">
-      M
-    </div>
+    <.io channel={:z} linked_channel={@links.z}) />
+    <.io channel={:x} linked_channel={@links.x}) />
+    <.io channel={:c} linked_channel={@links.c}) />
+    <.io channel={:v} linked_channel={@links.v}) />
+    <.io channel={:b} linked_channel={@links.b}) />
+    <.io channel={:n} linked_channel={@links.n}) />
+    <.io channel={:m} linked_channel={@links.m}) />
     <div class="key--double key--hidden">
       <div>&lt;</div>
       <div>,</div>
