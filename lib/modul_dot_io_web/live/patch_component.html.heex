@@ -1,0 +1,92 @@
+<section id="modul">
+  <div id="modul-controls">
+    <.form
+      :let={f}
+      for={:patch_form}
+      phx-target={@myself}
+      phx-change="load_patch"
+      id="modul-patch-form"
+    >
+      <%=
+        select(f, :patch_id, @patches, [
+          selected: @patch_id,
+          prompt: "init"
+        ])
+      %>
+    </.form>
+
+    <button
+      id="modul-reload"
+      type="button"
+      phx-click="reload_patch"
+      phx-target={@myself}
+      disabled={@links == @patch_links}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="modul-subcontrols">
+    <button
+      type="button"
+      phx-click="update_patch"
+      phx-target={@myself}
+      disabled={!@patch_id || @links == @patch_links}
+    >
+      Update
+    </button>
+
+    <button
+      type="button"
+      phx-click="delete_patch"
+      phx-target={@myself}
+      disabled={!@patch_id}
+    >
+      Delete
+    </button>
+
+    <button type="button"phx-click="saving_patch">
+      New
+    </button>
+  </div>
+
+  <div>
+    <div id="save-patch-modal" class="phx-modal" hidden={@linking_enabled}>
+      <div
+        id="save-patch-modal-content"
+        class="phx-modal-content"
+        phx-click-away="done_saving_patch"
+        phx-window-keydown="done_saving_patch"
+        phx-key="escape"
+      >
+        <a
+          id="close"
+          href="#"
+          class="phx-modal-close"
+          phx-click="done_saving_patch"
+        >
+          ✖
+        </a>
+        <div id="save-patch-modal-header" class="phx-modal-header">
+          <h3 class="text-3xl font-semibold">
+            Save New Patch
+          </h3>
+        </div>
+        <.form
+          :let={f}
+          for={:new_patch_form}
+          phx-submit="create_patch"
+          phx-target={@myself}
+          id="modul-new-patch-form"
+        >
+          <%= label f, :name %>
+          <%= text_input f, :name %>
+          <%= submit "Save" %>
+        </.form>
+      </div>
+    </div>
+  </div>
+</section>

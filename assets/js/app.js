@@ -27,8 +27,21 @@ import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+
+let Hooks = {};
+// this is unused but cool?
+Hooks.MultiSubmitForm = {
+  mounted() {
+    this.el.addEventListener("submit", (event) => {
+      let phxEvent = event.submitter.getAttribute("phx-submit");
+      event.target.setAttribute("phx-submit", phxEvent);
+    }, true);
+  }
+}
+
 let liveSocket = new LiveSocket("/live", Socket, {
   params: {_csrf_token: csrfToken},
+  hooks: Hooks,
   metadata: {
     keydown: (e, el) => {
       return {
@@ -59,4 +72,7 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-window.addEventListener("keydown", e => e.repeat && e.stopPropagation(), true);
+// stop event propagation for keydown repeats to stop blasting server during `phx-window-keydown`
+window.addEventListener("keydown", (event) => {
+  event.repeat && event.stopPropagation();
+}, true);

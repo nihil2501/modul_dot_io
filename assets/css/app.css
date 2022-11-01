@@ -7,7 +7,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 390px;
+  height: 460px;
 }
 
 main section {
@@ -23,56 +23,61 @@ main section {
   width: 100%;
 }
 
-#modul #chassis {
-  width: 38%;
+#modul #modul-controls {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  background: #333;
-  color: #eee;
-  float: left;
-  border-radius: 0.3em;
-  margin: 0.2em 0.2em 0.2em 3.8em;
-  padding: 0.5em 0.75em 0.5em 0.75em;
-  box-sizing: border-box;
-  border: 1px solid #444;
-  box-shadow: 0 0.2em 0 0.05em #222;
-  border-bottom-color: #555;
 }
 
-#modul #chassis select {
-  color: #00ff00;
-  border-color: #00ff00;
-  border-width: 2px;
+#modul #modul-patch-form {
+  margin: 0;
+}
+
+#modul #modul-reload {
+  line-height: 0;
+}
+
+#modul #modul-patch-form select {
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 300;
   font-size: 11px;
   font-family: Arial;
   font-weight: 700;
   line-height: 2.6rem;
+  border-width: thin;
+  border-color: #777;
   background: none;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 0rem;
-  margin-top: 0.2rem;
+  margin-right: 1px;
+  margin-bottom: 5px;
   flex: 8;
+  width: 250px;
 }
 
-#modul #chassis .button-container {
+#modul #modul-controls button {
+  background: rgba(0, 63, 255, 0.75);
+  margin-left: 2px;
+  margin-bottom: 5px;
+  padding: 0 1rem;
+  border: none;
+}
+
+#modul #modul-subcontrols {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 }
 
-#modul #chassis button {
-  background: #333;
-  color: #00ff00;
-  border-color: #00ff00;
-  border-width: 2px;
-  margin-left: 1rem;
-  margin-bottom: 0rem;
-  margin-top: 0.1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+#modul #modul-subcontrols button {
+  background: rgba(0, 63, 255, 0.75);
+  margin-left: 2px;
+  padding: 0 1rem;
+  border: none;
+}
+
+#modul #save-patch-modal form {
+  margin: 0;
 }
 
 /* Alerts and form errors used by phx.new */

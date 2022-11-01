@@ -7,16 +7,18 @@ defmodule ModulDotIoWeb.IoComponent do
 
   attr :channel, :atom, required: true
   attr :linked_channel, :atom, required: true
+  attr :linking_enabled, :boolean, required: true
   attr :rest, :global
 
   def io(assigns) do
     ~H"""
     <div
       class={["key--letter" | classes(@channel, @linked_channel)]}
-      phx-window-keydown={keydown()}
-      phx-window-keyup={keyup()}
+      phx-window-keydown={@linking_enabled && keydown()}
+      phx-window-keyup={@linking_enabled && keyup()}
       phx-key={@channel}
-      {@rest}>
+      {@rest}
+    >
       <%= @channel %>
     </div>
     """
