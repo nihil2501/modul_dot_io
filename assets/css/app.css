@@ -55,7 +55,7 @@ main section {
   width: 250px;
 }
 
-#modul #modul-controls button {
+#modul button {
   background: rgba(0, 63, 255, 0.75);
   margin-left: 2px;
   margin-bottom: 5px;
@@ -67,13 +67,6 @@ main section {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-#modul #modul-subcontrols button {
-  background: rgba(0, 63, 255, 0.75);
-  margin-left: 2px;
-  padding: 0 1rem;
-  border: none;
 }
 
 #modul #save-patch-modal form {

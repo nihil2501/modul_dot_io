@@ -53,40 +53,38 @@
     </button>
   </div>
 
-  <div>
-    <div id="save-patch-modal" class="phx-modal" hidden={@linking_enabled}>
-      <div
-        id="save-patch-modal-content"
-        class="phx-modal-content"
-        phx-click-away="done_saving_patch"
-        phx-window-keydown="done_saving_patch"
-        phx-key="escape"
+  <div id="save-patch-modal" class="phx-modal" hidden={@linking_enabled}>
+    <div
+      id="save-patch-modal-content"
+      class="phx-modal-content"
+      phx-click-away="done_saving_patch"
+      phx-window-keydown="done_saving_patch"
+      phx-key="escape"
+    >
+      <a
+        id="close"
+        href="#"
+        class="phx-modal-close"
+        phx-click="done_saving_patch"
       >
-        <a
-          id="close"
-          href="#"
-          class="phx-modal-close"
-          phx-click="done_saving_patch"
-        >
-          ✖
-        </a>
-        <div id="save-patch-modal-header" class="phx-modal-header">
-          <h3 class="text-3xl font-semibold">
-            Save New Patch
-          </h3>
-        </div>
-        <.form
-          :let={f}
-          for={:new_patch_form}
-          phx-submit="create_patch"
-          phx-target={@myself}
-          id="modul-new-patch-form"
-        >
-          <%= label f, :name %>
-          <%= text_input f, :name %>
-          <%= submit "Save" %>
-        </.form>
+        ✖
+      </a>
+      <div id="save-patch-modal-header" class="phx-modal-header">
+        <h3 class="text-3xl font-semibold">
+          Save New Patch
+        </h3>
       </div>
+      <.form
+        :let={f}
+        for={:new_patch_form}
+        phx-submit="create_patch"
+        phx-target={@myself}
+        id="modul-new-patch-form"
+      >
+        <%= label f, :name %>
+        <%= text_input f, :name %>
+        <%= submit "Save" %>
+      </.form>
     </div>
   </div>
 </section>
