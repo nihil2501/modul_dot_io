@@ -2,31 +2,42 @@ defmodule ModulDotIoWeb.PageLive do
   use ModulDotIoWeb, :live_view
 
   alias ModulDotIoWeb.{LinkComponent, PatchComponent}
-  import ModulDotIo.System, only: [channel_ios: 0]
-  alias ModulDotIo.System
+  import ChannelIos, only: [channel_ios: 0]
 
   def render(assigns) do
     ~H"""
-    <.live_component
-      module={LinkComponent}
-      id={LinkComponent}
-      linking_enabled={@linking_enabled}
-      links={@links}
-    />
     <.live_component
       module={PatchComponent}
       id={PatchComponent}
       linking_enabled={@linking_enabled}
       links={@links}
     />
+    <%= if @links do %>
+      <.live_component
+        module={LinkComponent}
+        id={LinkComponent}
+        linking_enabled={@linking_enabled}
+        links={@links}
+      />
+    <% end %>
     """
   end
 
   def mount(_params, _session, socket) do
-    patch_memory = System.get_or_create_patch_memory()
-    links = patch_memory.links |> deserialize_links() |> coalesce_links()
-    assigns = %{links: links, linking_enabled: true}
+    assigns = %{links: nil, linking_enabled: true}
     {:ok, assign(socket, assigns)}
+  end
+
+  def handle_event("saving_patch", _params, socket) do
+    {:noreply, assign(socket, linking_enabled: false)}
+  end
+
+  def handle_event("done_saving_patch", _params, socket) do
+    {:noreply, assign(socket, linking_enabled: true)}
+  end
+
+  def handle_info(:done_saving_patch, socket) do
+    {:noreply, assign(socket, linking_enabled: true)}
   end
 
   def handle_info({:link_updated, link}, socket) do
@@ -37,18 +48,6 @@ defmodule ModulDotIoWeb.PageLive do
   def handle_info({:links_replaced, links}, socket) do
     links = coalesce_links(links)
     {:noreply, assign(socket, links: links)}
-  end
-
-  def handle_info(:done_saving_patch, socket) do
-    {:noreply, assign(socket, linking_enabled: true)}
-  end
-
-  def handle_event("saving_patch", _params, socket) do
-    {:noreply, assign(socket, linking_enabled: false)}
-  end
-
-  def handle_event("done_saving_patch", _params, socket) do
-    {:noreply, assign(socket, linking_enabled: true)}
   end
 
   defp update_link(links, link) do
@@ -78,12 +77,5 @@ defmodule ModulDotIoWeb.PageLive do
     channel_ios()
     |> Map.new(fn {k, _v} -> {k, nil} end)
     |> Map.merge(links)
-  end
-
-  defp deserialize_links(links) do
-    Map.new(links, &({
-      String.to_atom(elem(&1, 0)),
-      String.to_atom(elem(&1, 1))
-    }))
   end
 end

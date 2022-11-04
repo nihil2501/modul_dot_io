@@ -3,7 +3,7 @@ defmodule ModulDotIoWeb.IoComponent do
 
   alias Phoenix.LiveView.JS
   alias ModulDotIo.System.Io
-  import ModulDotIo.System, only: [channel_ios: 0]
+  import ChannelIos, only: [channel_ios: 0]
 
   attr :channel, :atom, required: true
   attr :linked_channel, :atom, required: true

@@ -2,7 +2,7 @@ defmodule ModulDotIoWeb.LinkComponent do
   use ModulDotIoWeb, :live_component
 
   import ModulDotIoWeb.IoComponent
-  import ModulDotIo.System, only: [channel_ios: 0]
+  import ChannelIos, only: [channel_ios: 0]
 
   alias ModulDotIo.System.{Io, Link}
 

@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-import ModulDotIo.System, only: [channel_ios: 0]
+import ChannelIos, only: [channel_ios: 0]
 alias ModulDotIo.System
 
 System.delete_all_patches()
