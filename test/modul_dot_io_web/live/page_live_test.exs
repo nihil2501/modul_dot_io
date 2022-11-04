@@ -4,6 +4,6 @@ defmodule ModulDotIoWeb.PageLiveTest do
 
   test "connected mount", %{conn: conn} do
     {:ok, _view, html} = live(conn, "/")
-    assert html =~ "keyboard"
+    assert html =~ "modul"
   end
 end
