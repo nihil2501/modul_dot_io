@@ -32,3 +32,4 @@ modul_dot_io-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.DS_Store
