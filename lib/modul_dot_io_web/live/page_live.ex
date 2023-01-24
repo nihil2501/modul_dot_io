@@ -52,17 +52,18 @@ defmodule ModulDotIoWeb.PageLive do
 
   defp update_link(links, link) do
     # toggle link
-    output_channel_update =
-      fn channel ->
-        next_channel = link.output_io.channel
-        if next_channel != channel do
-          {channel, next_channel}
-        else
-          :pop
-        end
+    output_channel_update = fn channel ->
+      next_channel = link.output_io.channel
+
+      if next_channel != channel do
+        {channel, next_channel}
+      else
+        :pop
       end
+    end
 
     input_channel = link.input_io.channel
+
     {_, next_links} =
       Map.get_and_update(
         links,

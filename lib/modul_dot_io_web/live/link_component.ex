@@ -12,6 +12,7 @@ defmodule ModulDotIoWeb.LinkComponent do
 
   # Client also stops propagation of key repeats, so this guard is redundant.
   def handle_event("select_io", %{"repeat" => true}, socket), do: {:noreply, socket}
+
   def handle_event("select_io", %{"key" => channel, "repeat" => false}, socket) do
     output_ios = select_io(socket.assigns.output_ios, get_io(channel))
     {:noreply, assign(socket, output_ios: output_ios)}

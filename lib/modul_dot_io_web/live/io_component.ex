@@ -28,6 +28,7 @@ defmodule ModulDotIoWeb.IoComponent do
     case channel_ios()[channel] do
       %Io{direction: :output} ->
         ["channel-output", "channel-#{channel}"]
+
       %Io{direction: :input} ->
         if linked_channel do
           ["channel-input", "channel-#{linked_channel}"]

@@ -14,22 +14,21 @@ if Mix.env() == :dev do
   import ChannelIos, only: [channel_ios: 0]
   alias ModulDotIo.System
 
-  random_links =
-    fn ->
-      channels =
-        Enum.group_by(
-          channel_ios(),
-          &(elem(&1,1).direction),
-          &(elem(&1,1).channel)
-        )
+  random_links = fn ->
+    channels =
+      Enum.group_by(
+        channel_ios(),
+        &elem(&1, 1).direction,
+        &elem(&1, 1).channel
+      )
 
-      channels.input
-      |> Enum.reject(&(&1 && Enum.random([true, true, true, false])))
-      |> Map.new(fn input ->
-        output = Enum.random(channels.output)
-        {input, output}
-      end)
-    end
+    channels.input
+    |> Enum.reject(&(&1 && Enum.random([true, true, true, false])))
+    |> Map.new(fn input ->
+      output = Enum.random(channels.output)
+      {input, output}
+    end)
+  end
 
   for name <- ["liveset 2020-01-01", "rockband", "video jockey"] do
     System.create_patch(%{

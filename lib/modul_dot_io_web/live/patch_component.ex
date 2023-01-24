@@ -32,6 +32,7 @@ defmodule ModulDotIoWeb.PatchComponent do
       end
 
     socket = assign(socket, assigns)
+
     if Map.has_key?(assigns, :links) do
       socket.assigns
       |> Map.take([:patch_id, :links])
@@ -93,10 +94,10 @@ defmodule ModulDotIoWeb.PatchComponent do
   end
 
   defp get_patches do
-    System.list_patches() |> Enum.map(&({&1.name, &1.id}))
+    System.list_patches() |> Enum.map(&{&1.name, &1.id})
   end
 
-  def get_patch_links(id) do
+  defp get_patch_links(id) do
     System.get_patch(id).links |> deserialize_links()
   end
 
@@ -110,9 +111,12 @@ defmodule ModulDotIoWeb.PatchComponent do
   end
 
   defp deserialize_links(links) do
-    Map.new(links, &({
-      String.to_atom(elem(&1, 0)),
-      String.to_atom(elem(&1, 1))
-    }))
+    Map.new(
+      links,
+      &{
+        String.to_atom(elem(&1, 0)),
+        String.to_atom(elem(&1, 1))
+      }
+    )
   end
 end
